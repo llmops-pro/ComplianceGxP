@@ -1,11 +1,33 @@
 # ComplianceRAG — Community Edition
 
 > AI compliance assistant for pharma and CDMO teams.  
-> Self-hosted · GxP-aware · Source-cited answers.
+> Free hosted API · Self-hosted Docker · GxP-aware · Source-cited answers.
 
 [![Docker](https://img.shields.io/badge/docker-llmopspro%2Fcompliancerag-blue?logo=docker)](https://hub.docker.com/r/llmopspro/compliancerag)
 [![License](https://img.shields.io/badge/license-Community-green)](#license)
 [![AgentContract](https://img.shields.io/badge/AgentContract-verified-2ea44f?logo=github)](https://github.com/agentcontract/spec)
+
+---
+
+## Two Ways to Use ComplianceRAG
+
+### Option 1 — Free Hosted API (no setup required)
+
+The Community API is already running at `llmops.pro`. No Docker, no API key, no account needed.
+
+```bash
+curl -X POST https://www.llmops.pro/api/v1/query \
+  -H "Content-Type: application/json" \
+  -d '{"query": "What are the IQ requirements for a GAMP 5 Category 4 MES system?", "mode": "qa"}'
+```
+
+**Limits:** 10 queries/day free · 50 queries/day with a [Community Supporter key](https://www.llmops.pro/support)
+
+**Knowledge base:** GAMP5 Second Edition · 21 CFR Part 11 · EU Annex 11 · ICH Q7/Q10 · EU AI Act
+
+### Option 2 — Self-Hosted (your own documents)
+
+Run ComplianceRAG on your own infrastructure with your own SOPs, protocols, and guidelines.
 
 ---
 
@@ -21,7 +43,41 @@ ComplianceRAG is a retrieval-augmented generation (RAG) system purpose-built for
 
 ---
 
-## Quick Start
+## API Reference (Hosted)
+
+### `POST /api/v1/query`
+
+```bash
+curl -X POST https://www.llmops.pro/api/v1/query \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: crag_your_supporter_key"  \  # optional — raises limit to 50/day
+  -d '{
+    "query": "What does EU Annex 11 require for audit trails?",
+    "mode": "qa"
+  }'
+```
+
+**Response:**
+```json
+{
+  "answer": "EU Annex 11 §9 requires that audit trails...",
+  "sources": [
+    {"document": "eu-annex-11", "section": "§9 Audit Trails", "similarity": 0.93}
+  ],
+  "mode": "qa",
+  "query_id": "qry_a3f9c12d8e1b"
+}
+```
+
+| Field | Description |
+|-------|-------------|
+| `query` | Your compliance question (required) |
+| `mode` | Only `"qa"` in Community API. Deviation/CAPA/CSV available in [Private Pilot](https://www.llmops.pro/services) |
+| `X-API-Key` | Supporter key for 50 queries/day — get one at [llmops.pro/support](https://www.llmops.pro/support) |
+
+---
+
+## Self-Hosted Quick Start
 
 **Prerequisites:** Docker, Docker Compose, an [Anthropic API key](https://console.anthropic.com)
 
