@@ -3,6 +3,8 @@
 > AI compliance assistant for pharma and CDMO teams.  
 > Free hosted API · Self-hosted Docker · GxP-aware · Source-cited answers.
 
+> **GxP Notice.** This Community Edition runs the same code as our Professional tier, but **no validation evidence accompanies it**. The IQ/OQ test suites ship inside the image so you can run them yourself — the *signed evidence reports* tied to a specific qualified environment are produced as part of the Professional pilot. For production use under FDA 21 CFR Part 11, EU Annex 11, or GAMP 5, see [llmops.pro/services](https://www.llmops.pro/services).
+
 [![Docker](https://img.shields.io/badge/docker-llmopspro%2FComplianceGxP-blue?logo=docker)](https://hub.docker.com/r/llmopspro/ComplianceGxP)
 [![License](https://img.shields.io/badge/license-Community-green)](#license)
 [![AgentContract](https://img.shields.io/badge/AgentContract-verified-2ea44f?logo=github)](https://github.com/agentcontract/spec)
