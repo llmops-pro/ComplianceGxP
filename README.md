@@ -1,15 +1,15 @@
-# ComplianceRAG — Community Edition
+# ComplianceGxP — Community Edition
 
 > AI compliance assistant for pharma and CDMO teams.  
 > Free hosted API · Self-hosted Docker · GxP-aware · Source-cited answers.
 
-[![Docker](https://img.shields.io/badge/docker-llmopspro%2Fcompliancerag-blue?logo=docker)](https://hub.docker.com/r/llmopspro/compliancerag)
+[![Docker](https://img.shields.io/badge/docker-llmopspro%2FComplianceGxP-blue?logo=docker)](https://hub.docker.com/r/llmopspro/ComplianceGxP)
 [![License](https://img.shields.io/badge/license-Community-green)](#license)
 [![AgentContract](https://img.shields.io/badge/AgentContract-verified-2ea44f?logo=github)](https://github.com/agentcontract/spec)
 
 ---
 
-## Two Ways to Use ComplianceRAG
+## Two Ways to Use ComplianceGxP
 
 ### Option 1 — Free Hosted API (no setup required)
 
@@ -27,13 +27,13 @@ curl -X POST https://www.llmops.pro/api/v1/query \
 
 ### Option 2 — Self-Hosted (your own documents)
 
-Run ComplianceRAG on your own infrastructure with your own SOPs, protocols, and guidelines.
+Run ComplianceGxP on your own infrastructure with your own SOPs, protocols, and guidelines.
 
 ---
 
-## What is ComplianceRAG?
+## What is ComplianceGxP?
 
-ComplianceRAG is a retrieval-augmented generation (RAG) system purpose-built for regulated pharma and CDMO environments. Unlike generic RAG tools, it includes:
+ComplianceGxP is a retrieval-augmented generation (RAG) system purpose-built for regulated pharma and CDMO environments. Unlike generic RAG tools, it includes:
 
 - **GxP-aware query modes** — not just "chat with your docs" but structured compliance workflows
 - **Source citations** — every answer references the exact document and section
@@ -83,8 +83,8 @@ curl -X POST https://www.llmops.pro/api/v1/query \
 
 ```bash
 # 1. Clone this repo
-git clone https://github.com/llmops-pro/compliancerag
-cd compliancerag
+git clone https://github.com/llmops-pro/ComplianceGxP
+cd ComplianceGxP
 
 # 2. Configure
 cp .env.example .env
@@ -104,7 +104,7 @@ open http://localhost:8000
 Drop PDFs, DOCX, or TXT files into the `docs/` folder, then run:
 
 ```bash
-docker compose exec api compliancerag ingest \
+docker compose exec api ComplianceGxP ingest \
   --client my-company \
   --path ./docs/
 ```
@@ -123,7 +123,7 @@ Open `http://localhost:8000` in your browser. Select a client, choose a mode, an
 
 ```bash
 # Create an API key for your client
-docker compose exec api compliancerag keys create \
+docker compose exec api ComplianceGxP keys create \
   --client my-company --tier professional
 
 # Query
@@ -191,10 +191,10 @@ Create and manage clients:
 
 ```bash
 # Create a client
-docker compose exec api compliancerag client create --name sponsor-a
+docker compose exec api ComplianceGxP client create --name sponsor-a
 
 # List clients and index stats
-docker compose exec api compliancerag status
+docker compose exec api ComplianceGxP status
 ```
 
 ---
@@ -205,13 +205,13 @@ The community image ships with IQ, OQ, and PQ test suites:
 
 ```bash
 # Run IQ (installation qualification)
-docker compose exec api compliancerag validate iq
+docker compose exec api ComplianceGxP validate iq
 
 # Run OQ (operational qualification)
-docker compose exec api compliancerag validate oq
+docker compose exec api ComplianceGxP validate oq
 
 # Generate evidence report
-docker compose exec api compliancerag validate report --output validation-evidence.json
+docker compose exec api ComplianceGxP validate report --output validation-evidence.json
 ```
 
 ---
@@ -274,6 +274,6 @@ For commercial deployment, team usage, or private pilot access, see [llmops.pro/
 
 ## Support
 
-- Questions: [GitHub Discussions](https://github.com/llmops-pro/compliancerag/discussions)
-- Issues: [GitHub Issues](https://github.com/llmops-pro/compliancerag/issues)
+- Questions: [GitHub Discussions](https://github.com/llmops-pro/ComplianceGxP/discussions)
+- Issues: [GitHub Issues](https://github.com/llmops-pro/ComplianceGxP/issues)
 - Email: hello@llmops.pro
