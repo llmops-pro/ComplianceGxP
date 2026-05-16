@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   api:
-    image: llmopspro/compliancerag:latest
+    image: llmopspro/compliancegxp:latest
     container_name: compliancegxp
     ports:
       - "8000:8000"
